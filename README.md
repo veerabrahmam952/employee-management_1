@@ -49,3 +49,7 @@ npm test
     ```
 
 2. Deploy the `build` folder to your hosting provider.
+
+## Deployed URL's
+- [Netlify Deployment](https://golden-sawine-7ce6f7.netlify.app/)
+- [Firebase Deployment](https://unified-front-end.web.app/)
