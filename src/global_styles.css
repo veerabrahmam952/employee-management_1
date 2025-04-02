@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.mat-mdc-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.employee-form {
+  @apply p-6;
+}
+
+.employee-list {
+  @apply max-w-4xl mx-auto p-4;
+}
+
+.employee-card {
+  @apply bg-white rounded-lg shadow-md p-4 mb-4;
+}
+
+@media (min-width: 768px) {
+  .employee-grid {
+    @apply grid grid-cols-2 gap-4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .employee-grid {
+    @apply grid-cols-3;
+  }
+}

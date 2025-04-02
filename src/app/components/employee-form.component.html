@@ -1,0 +1,61 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+<div class="fixed inset-0 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+    <form class="employee-form" (ngSubmit)="onSubmit()">
+      <h2 class="text-2xl font-bold mb-6">{{ editMode ? 'Edit' : 'Add' }} Employee</h2>
+      
+      <div class="space-y-4">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="employee.name" name="name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Role</mat-label>
+          <mat-select [(ngModel)]="employee.position" name="position" required>
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{role}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Join Date</mat-label>
+          <input matInput [matDatepicker]="joinDatePicker" [(ngModel)]="employee.joinDate" name="joinDate" required>
+          <mat-datepicker-toggle matIconSuffix [for]="joinDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #joinDatePicker>
+            <mat-datepicker-actions>
+              <div class="p-2 flex flex-wrap gap-2">
+                <button mat-stroked-button type="button" (click)="setJoinDate('today'); joinDatePicker.close()">Today</button>
+                <button mat-stroked-button type="button" (click)="setJoinDate('nextMonday'); joinDatePicker.close()">Next Monday</button>
+                <button mat-stroked-button type="button" (click)="setJoinDate('nextTuesday'); joinDatePicker.close()">Next Tuesday</button>
+                <button mat-stroked-button type="button" (click)="setJoinDate('nextWeek'); joinDatePicker.close()">After 1 week</button>
+              </div>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>End Date</mat-label>
+          <input matInput [matDatepicker]="endDatePicker" [(ngModel)]="employee.endDate" name="endDate">
+          <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker>
+            <mat-datepicker-actions>
+              <div class="p-2 flex gap-2">
+                <button mat-stroked-button type="button" (click)="setEndDate('noDate'); endDatePicker.close()">No date</button>
+                <button mat-stroked-button type="button" (click)="setEndDate('today'); endDatePicker.close()">Today</button>
+              </div>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="flex justify-end gap-2 mt-6">
+        <button mat-button type="button" (click)="onCancel()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">
+          {{ editMode ? 'Update' : 'Add' }} Employee
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

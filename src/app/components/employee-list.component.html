@@ -1,0 +1,55 @@
+<div class="employee-list relative">
+  <button 
+    mat-fab 
+    color="primary" 
+    class="fixed bottom-6 right-6 z-10"
+    (click)="showForm = true"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+
+  @if (showForm) {
+    <app-employee-form #employeeForm (closeForm)="showForm = false"></app-employee-form>
+  }
+  
+  <div class="mt-8">
+    <h2 class="text-2xl font-bold mb-4">Employees</h2>
+    
+    @if (dbService.employees().length === 0) {
+      <div class="flex flex-col items-center justify-center py-12 text-center">
+        <img 
+          src="https://cdn.jsdelivr.net/npm/@tabler/icons@2.47.0/icons/users-plus.svg"
+          alt="No employees" 
+          class="w-64 h-64 mb-6 text-gray-400"
+        />
+        <h3 class="text-xl font-semibold text-gray-700 mb-2">No Employees Found</h3>
+        <p class="text-gray-500 mb-6">Click the + button to add your first employee</p>
+      </div>
+    } @else {
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        @for (employee of dbService.employees(); track employee.id) {
+          <mat-card class="employee-card">
+            <mat-card-header>
+              <mat-card-title>{{ employee.name }}</mat-card-title>
+              <mat-card-subtitle>{{ employee.position }}</mat-card-subtitle>
+            </mat-card-header>
+            
+            <mat-card-content>
+              <p>Joined: {{ formatDate(employee.joinDate) }}</p>
+              <p>End Date: {{ employee.endDate ? formatDate(employee.endDate) : 'No end date' }}</p>
+            </mat-card-content>
+            
+            <mat-card-actions>
+              <button mat-button color="primary" (click)="editEmployee(employee)">
+                <mat-icon>edit</mat-icon> Edit
+              </button>
+              <button mat-button color="warn" (click)="deleteEmployee(employee.id!)">
+                <mat-icon>delete</mat-icon> Delete
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
+    }
+  </div>
+</div>
