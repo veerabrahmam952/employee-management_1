@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmployeeListComponent } from './employee-list.component';
-import { IndexDBService } from '../services/indexdb.service';
+import { IndexDBService } from '../../services/indexdb.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { signal } from '@angular/core';
-import { Employee } from '../services/indexdb.service';
+import { Employee } from '../../services/indexdb.service';
 
 describe('EmployeeListComponent', () => {
   let component: EmployeeListComponent;
@@ -29,7 +29,8 @@ describe('EmployeeListComponent', () => {
 
   beforeEach(async () => {
     mockIndexDBService = jasmine.createSpyObj('IndexDBService', ['deleteEmployee']);
-    mockIndexDBService.employees = signal(mockEmployees);
+    mockIndexDBService.employees = jasmine.createSpyObj('WritableSignal', ['set', 'get']);
+    mockIndexDBService.employees.and.returnValue(mockEmployees);
 
     await TestBed.configureTestingModule({
       imports: [EmployeeListComponent, BrowserAnimationsModule],

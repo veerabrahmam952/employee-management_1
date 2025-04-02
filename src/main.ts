@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { EmployeeListComponent } from './app/components/employee-list.component';
+import { EmployeeListComponent } from './app/components/emplyee-list/employee-list.component';
 
 @Component({
   selector: 'app-root',

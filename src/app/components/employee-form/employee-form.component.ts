@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCalendarHeader, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { IndexDBService, Employee } from '../services/indexdb.service';
+import { IndexDBService, Employee } from '../../services/indexdb.service';
 import { addDays, nextMonday, nextTuesday, startOfToday } from 'date-fns';
 
 @Component({
@@ -21,44 +21,10 @@ import { addDays, nextMonday, nextTuesday, startOfToday } from 'date-fns';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   templateUrl: './employee-form.component.html',
-  styles: [`
-    :host {
-      display: block;
-    }
-    .employee-form {
-      padding: 1.5rem;
-    }
-    ::ng-deep {
-      .mat-datepicker-content {
-        background-color: white !important;
-        @apply shadow-lg rounded-lg;
-        
-        .mat-calendar {
-          width: auto;
-        }
-        
-        button {
-          @apply bg-primary-100 hover:bg-primary-200;
-        }
-      }
-      
-      .mat-mdc-select-panel {
-        background-color: white !important;
-        @apply shadow-lg;
-      }
-      
-      .mdc-button {
-        @apply bg-primary-100 hover:bg-primary-200;
-      }
-      
-      .mat-mdc-raised-button.mat-primary {
-        @apply bg-primary-600 hover:bg-primary-700;
-      }
-    }
-  `]
+  styleUrl: './employee-form.component.scss',
 })
 export class EmployeeFormComponent {
   private dbService = inject(IndexDBService);

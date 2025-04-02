@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { IndexDBService } from '../services/indexdb.service';
-import { EmployeeFormComponent } from './employee-form.component';
+import { IndexDBService } from '../../services/indexdb.service';
+import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import { formatDate } from '@angular/common';
 
 @Component({
@@ -18,33 +18,7 @@ import { formatDate } from '@angular/common';
     EmployeeFormComponent
   ],
   templateUrl: './employee-list.component.html',
-  styles: [`
-    :host {
-      display: block;
-    }
-    ::ng-deep {
-      .mat-mdc-select-panel {
-        background-color: white !important;
-        @apply shadow-lg;
-      }
-      .mat-calendar {
-        background-color: white !important;
-        @apply shadow-lg rounded-lg;
-      }
-      .mdc-button {
-        @apply bg-primary-100 hover:bg-primary-200;
-      }
-      .mat-mdc-raised-button.mat-primary {
-        @apply bg-primary-600 hover:bg-primary-700;
-      }
-      .mat-mdc-fab.mat-primary {
-        @apply bg-primary-600 hover:bg-primary-700 fixed bottom-6 right-6 z-50;
-      }
-      .mat-warn {
-        @apply bg-red-100 hover:bg-red-200 text-red-700;
-      }
-    }
-  `]
+  styleUrl: './employee-list.component.scss'
 })
 export class EmployeeListComponent {
   dbService = inject(IndexDBService);

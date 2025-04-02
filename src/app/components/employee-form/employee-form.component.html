@@ -25,11 +25,13 @@
           <mat-datepicker-toggle matIconSuffix [for]="joinDatePicker"></mat-datepicker-toggle>
           <mat-datepicker #joinDatePicker>
             <mat-datepicker-actions>
-              <div class="p-2 flex flex-wrap gap-2">
+              <div class="calendar-header-buttons">
                 <button mat-stroked-button type="button" (click)="setJoinDate('today'); joinDatePicker.close()">Today</button>
                 <button mat-stroked-button type="button" (click)="setJoinDate('nextMonday'); joinDatePicker.close()">Next Monday</button>
                 <button mat-stroked-button type="button" (click)="setJoinDate('nextTuesday'); joinDatePicker.close()">Next Tuesday</button>
                 <button mat-stroked-button type="button" (click)="setJoinDate('nextWeek'); joinDatePicker.close()">After 1 week</button>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-button matDatepickerApply>Apply</button>
               </div>
             </mat-datepicker-actions>
           </mat-datepicker>
@@ -40,10 +42,12 @@
           <input matInput [matDatepicker]="endDatePicker" [(ngModel)]="employee.endDate" name="endDate">
           <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
           <mat-datepicker #endDatePicker>
-            <mat-datepicker-actions>
-              <div class="p-2 flex gap-2">
+            <mat-datepicker-actions align="end">
+              <div class="calendar-header-buttons">
                 <button mat-stroked-button type="button" (click)="setEndDate('noDate'); endDatePicker.close()">No date</button>
                 <button mat-stroked-button type="button" (click)="setEndDate('today'); endDatePicker.close()">Today</button>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-button matDatepickerApply>Apply</button>
               </div>
             </mat-datepicker-actions>
           </mat-datepicker>

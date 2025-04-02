@@ -1,0 +1,62 @@
+:host {
+  display: block;
+}
+
+.employee-form {
+  padding: 1.5rem;
+}
+
+::ng-deep {
+  .mat-datepicker-content {
+    background-color: white !important;
+    @apply shadow-lg rounded-lg;
+
+    .mat-calendar {
+      width: auto;
+    }
+
+    button {
+      @apply bg-primary-100 hover:bg-primary-200;
+    }
+  }
+
+  .mat-mdc-select-panel {
+    background-color: white !important;
+    @apply shadow-lg;
+  }
+
+  .mdc-button {
+    @apply bg-primary-100 hover:bg-primary-200;
+  }
+
+  .mat-mdc-raised-button.mat-primary {
+    @apply bg-primary-600 hover:bg-primary-700;
+  }
+}
+
+/* Updated styles for calendar header buttons */
+/* filepath: c:\Users\veera\projects\employee-management_1\src\app\components\employee-form\employee-form.component.scss */
+
+/* Style the calendar header buttons */
+.calendar-header-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two buttons per row */
+  gap: 8px; /* Space between buttons */
+  padding: 8px;
+  background-color: #f9f9f9; /* Light background color */
+  border-bottom: 1px solid #e0e0e0; /* Optional: Add a separator */
+  border-radius: 4px 4px 0 0; /* Rounded corners for the top */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%; /* Ensure the buttons take the full width of the calendar popup */
+}
+
+/* Style the buttons */
+.calendar-header-buttons button {
+  font-size: 14px; /* Slightly larger font for better readability */
+  padding: 8px 12px; /* Increase padding for better usability */
+  border-radius: 4px;
+  width: 100%; /* Make buttons stretch to fill their grid cell */
+  text-align: center; /* Center-align the button text */
+}

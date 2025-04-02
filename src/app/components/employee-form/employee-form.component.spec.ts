@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmployeeFormComponent } from './employee-form.component';
-import { IndexDBService } from '../services/indexdb.service';
+import { IndexDBService } from '../../services/indexdb.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { startOfToday, nextMonday, nextTuesday, addDays } from 'date-fns';
 
@@ -31,7 +31,6 @@ describe('EmployeeFormComponent', () => {
   it('should initialize with default employee values', () => {
     expect(component.employee).toEqual({
       name: '',
-      email: '',
       position: '',
       joinDate: jasmine.any(Date),
       endDate: null
@@ -82,7 +81,6 @@ describe('EmployeeFormComponent', () => {
   it('should reset form when resetForm is called', () => {
     component.employee = {
       name: 'Test',
-      email: 'test@test.com',
       position: 'Developer',
       joinDate: new Date(),
       endDate: new Date()
@@ -93,7 +91,6 @@ describe('EmployeeFormComponent', () => {
 
     expect(component.employee).toEqual({
       name: '',
-      email: '',
       position: '',
       joinDate: jasmine.any(Date),
       endDate: null
